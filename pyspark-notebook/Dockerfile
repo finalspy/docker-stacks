@@ -8,8 +8,8 @@ LABEL maintainer="Saagie"
 USER root
 
 # Spark dependencies
-ENV APACHE_SPARK_VERSION 2.3.4
-ENV HADOOP_VERSION 2.7
+ENV APACHE_SPARK_VERSION 2.1.0
+ENV HADOOP_VERSION 2.6
 # On debian slim needs mkdir man directory to avoid installation errors
 RUN mkdir -p /usr/share/man/man1 && \
     apt-get -y update && \
@@ -41,7 +41,7 @@ RUN cd /tmp && \
 
 # Spark and Mesos config
 ENV SPARK_HOME /usr/local/spark
-ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.7-src.zip
+ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip
 ENV MESOS_NATIVE_LIBRARY /usr/local/lib/libmesos.so
 ENV SPARK_OPTS --driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info
 
